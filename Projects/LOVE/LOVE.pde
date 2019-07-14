@@ -1,7 +1,7 @@
 color col1 = color(0), col2 = color(255);
 PShape love, left, right, main;
-float timing, speed = 0.001;
-  
+float timing, speed = 0.0001;
+
 void setup() {
   size(500, 500, P2D);
   noStroke();
@@ -25,9 +25,11 @@ void draw() {
   timing = (speed*millis())%1;
 
   rotate(QUARTER_PI);
-  if (timing > 0.85) scale(1.25*(height/5));
-  else scale(height/5);
+  //if (timing > 0.85) scale(1.25*(height/5));
+  //else scale(height/5);
+
+  scale(100+(100*abs(sin(map(timing, 0, 1, 0, TWO_PI)))));
 
   shape(love);
-//  saveFrame("##.jpg");
+   saveFrame("##.jpg");
 }
